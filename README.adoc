@@ -1,1 +1,46 @@
-= Simplifying Data Persistence with Jakarta Data
+// Copyright (c) 2024 IBM Corporation and others.
+// Licensed under Creative Commons Attribution-NoDerivatives
+// 4.0 International (CC BY-ND 4.0)
+//   https://creativecommons.org/licenses/by-nd/4.0/
+//
+// Contributors:
+//     IBM Corporation
+//
+:page-layout: guide-multipane
+:projectid: jakarta-data
+:page-duration: 500 minutes
+:page-releasedate: 2024-01-01
+:page-majorupdateddate: 2023-01-01
+:page-description: Description - TODO
+:page-tags: ['']
+:page-related-guides: ['', ']
+:page-permalink: /guides/{projectid}
+:common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/prod
+:source-highlighter: prettify
+:page-seo-title: Jakarta Data - TODO
+:page-seo-description: Jakarta Data - TODO
+:guide-author: Open Liberty
+= Data Persistence with Jakarta Data
+[.hidden]
+NOTE: This repository contains the guide documentation source. To view the guide in published form, view it on the https://openliberty.io/guides/{projectid}.html[Open Liberty website].
+
+== What you'll learn
+
+TODO
+
+[role='command']
+include::{common-includes}/gitclone.adoc[]
+
+
+== Creating an Entity
+
+In Jakarta Data an entity defines the structure for persisting a piece of data. This structure is represented by a Java object and it's associated fields. Start by creating a simple record class.
+
+[role="code_command hotspot", subs="quotes"]
+----
+#Create the `Package` class.#
+`src/main/java/io/openliberty/guides/data/Package.java`
+----
+
+This is a very simple entity, with only a single field `id`.
+
