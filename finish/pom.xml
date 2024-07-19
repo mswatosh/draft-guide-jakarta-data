@@ -73,6 +73,25 @@
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.8.2</version>
+                <configuration>
+                    <assemblyArtifact>
+                        <groupId>io.openliberty.beta</groupId>
+                        <artifactId>openliberty-runtime</artifactId>
+                        <version>24.0.0.6-beta</version>
+                        <type>zip</type>
+                    </assemblyArtifact>
+                    <copyDependencies>
+                        <dependencyGroup>
+                            <!-- Relative to server config directory -->
+                            <location>lib/derby</location>
+                            <dependency>
+                                <groupId>org.apache.derby</groupId>
+                                <artifactId>derby</artifactId>
+                                <version>10.14.1.0</version>
+                            </dependency>
+                        </dependencyGroup>
+                    </copyDependencies>
+                </configuration>
             </plugin>
             <!-- Plugin to run functional tests -->
             <plugin>

@@ -2,9 +2,9 @@
 
   <featureManager>
       <feature>restfulWS-3.1</feature>
-      <feature>jsonp-2.1</feature>
-      <feature>jsonb-3.0</feature>
       <feature>cdi-4.0</feature>
+      <feature>data-1.0</feature>
+      <feature>persistence-3.1</feature>
   </featureManager>
 
   <variable name="default.http.port" defaultValue="9080"/>
@@ -14,4 +14,14 @@
       id="defaultHttpEndpoint" host="*" />
 
   <webApplication location="draft-guides-template.war" contextRoot="todo-app"/>
+
+  <library id="DerbyLib">
+    <fileset dir="${server.config.dir}/lib/derby" includes="*.jar"/>
+  </library>
+
+  <dataSource id="DefaultDataSource" jndiName="jdbc/datadb">
+    <jdbcDriver libraryRef="DerbyLib"/>
+    <properties.derby.embedded databaseName="memory:testDB" createDatabase="create"/>
+  </dataSource>
+
 </server>
