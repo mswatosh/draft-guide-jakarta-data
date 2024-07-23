@@ -26,13 +26,17 @@ NOTE: This repository contains the guide documentation source. To view the guide
 
 == What you'll learn
 
+=== Intro
+TODO
+
+=== What is Jakarta Data?
 TODO
 
 [role='command']
 include::{common-includes}/gitclone.adoc[]
 
 
-== Creating an Entity
+== Creating an Entity and Repository
 
 In Jakarta Data an entity defines the structure for persisting a piece of data. This structure is represented by a Java object and it's associated fields. Start by creating a simple record class.
 
@@ -44,3 +48,10 @@ In Jakarta Data an entity defines the structure for persisting a piece of data. 
 
 This is a very simple entity, with only a single field `id`.
 
+Repositories in Jakarta Data provide a simplified means for interacting with persistent data. Jakarta Data provides several built in Repositories with common methods which can be extended. The `CrudRepository` interface provides methods for Create, Read, Update, and Delete (CRUD) operations.
+
+//TODO Packages or PackageRepository?
+----
+#Create the `Packages` class.#
+`src/main/java/io/openliberty/guides/data/Packages.java`
+----
