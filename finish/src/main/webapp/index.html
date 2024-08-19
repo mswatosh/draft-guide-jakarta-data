@@ -18,6 +18,7 @@
 <html>
     <head>
 		<title>Jakarta Data Query Demo</title>
+        <script type="text/javascript" src="js/app.js"></script>
 		<link rel="stylesheet" href="css/app.css">
 		<link rel="stylesheet" href="css/toast.css">
     </head>
@@ -30,7 +31,17 @@
                 <h2>Congrats on your shiny, new Open Liberty sample app!</h2>
                 <p>This demo application lets you experiment with Jakarta Data Repository queries</p>
             </div>
+            <div id="demoApp" class="hFlexContainer">
+                <div id="querySection" class="vFlexContainer">
+
+                </div>
+                <div id="resultsSection">
+
+                </div>
+            </div>
+            </section>
         </section>
+
     </body>
 
     <footer class="bodyFooter">
@@ -47,5 +58,5 @@
 	<div id="toast">
 </html>
 <script>
-refreshDisplay();
+loadQueries();
 </script>
