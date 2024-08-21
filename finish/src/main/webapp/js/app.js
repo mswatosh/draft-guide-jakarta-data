@@ -10,7 +10,7 @@ async function loadQueries() {
 function addToQueries(item) {
     var button = document.createElement("button")
     button.setAttribute("onclick","")
-    button.innerHTML = item
+    button.innerHTML = item.name
 
     var node = document.getElementById("querySection")
     node.appendChild(button)
