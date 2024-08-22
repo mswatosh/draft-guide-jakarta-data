@@ -1,5 +1,6 @@
 package io.openliberty.guides.data;
 
+import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -52,7 +53,9 @@ public class PackageQueryService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String callQuery(JsonObject json) {
+    public String callQuery(String jsonString) {
+        System.out.println(jsonString);
+        JsonObject json = Json.createReader(new StringReader(jsonString)).readObject();
         try {
             Method method = Packages.class.getMethod(json.getString("method"));
             Object result = method.invoke(packages);
@@ -63,7 +66,7 @@ public class PackageQueryService {
                     returnList.add(((Package) p).toJson());
                 });
             }
-            return returnList.toString();
+            return returnList.build().toString();
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
             // TODO Reply to Client with error message
             e.printStackTrace();
