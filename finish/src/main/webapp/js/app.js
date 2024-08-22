@@ -26,5 +26,25 @@ async function callQuery(query) {
 		},
 		body: JSON.stringify(query),
 	})
+
+	if (response.ok) {
+		const body = await response.text();
+		if (body.length > 0) {
+            var node = document.getElementById("resultsSection")
+            node.replaceChildren() //clear the results section
+
+			for (m of JSON.parse(body)) {
+				var div = document.createElement("div")
+                div.innerHTML = "id = " + m.id;
+                div.innerHTML += " length = " + m.length;
+                div.innerHTML += " width = " + m.width;
+                div.innerHTML += " height = " + m.height;
+                node.appendChild(div)
+			}
+		}
+	} else {
+		toast("Error! TODO better message",0)
+	}
+
     console.log(response);
 }
