@@ -8,12 +8,28 @@ async function loadQueries() {
 }
 
 function addToQueries(item) {
+    var container = document.createElement("div")
+    container.className = "vFlexContainer"
+
+    var parameters = document.createElement("div")
+    parameters.className = "hFlexContainer"
+
+    item.parameters.forEach(param => {
+        input = document.createElement("input")
+        input.placeholder = param
+        parameters.appendChild(input)
+    })
+
+    container.appendChild(parameters)
+
     var button = document.createElement("button")
     button.setAttribute("onclick","callQuery({ 'method' : '" + item.name + "' })")
     button.innerHTML = item.name
 
+    container.appendChild(button)
+
     var node = document.getElementById("querySection")
-    node.appendChild(button)
+    node.appendChild(container)
     
     //<button id="findAllButton" class="buttons queryButton selectedQuery" onclick="setActiveQuery('findAll')">findAll</button>
 } 
