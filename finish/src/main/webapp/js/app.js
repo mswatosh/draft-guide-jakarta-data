@@ -3,12 +3,13 @@ async function loadQueries() {
 
     if (response.ok) {
         const list = await response.json();
-        list.forEach(addToQueries)
+        list.forEach(addToQueries) // TODO pass id to each query to set on div
     }
 }
 
-function addToQueries(item) {
+function addToQueries(item, index) {
     var container = document.createElement("div")
+    container.id = "query" + index
     container.className = "vFlexContainer"
 
     var parameters = document.createElement("div")
@@ -23,7 +24,7 @@ function addToQueries(item) {
     container.appendChild(parameters)
 
     var button = document.createElement("button")
-    button.setAttribute("onclick","callQuery({ 'method' : '" + item.name + "' })")
+    button.setAttribute("onclick","callQuery(" + index + ")")
     button.innerHTML = item.name
 
     container.appendChild(button)
@@ -31,10 +32,12 @@ function addToQueries(item) {
     var node = document.getElementById("querySection")
     node.appendChild(container)
     
-    //<button id="findAllButton" class="buttons queryButton selectedQuery" onclick="setActiveQuery('findAll')">findAll</button>
 } 
 
-async function callQuery(query) {
+async function callQuery(index) {
+    var node = document.getElementById("query" + index)
+    var query = {}
+    query.method = node.getElementsByTagName("button")[0].innerHTML
     const response = await fetch("shipping/packageQuery", {
 		method: "POST",
 		headers: {
