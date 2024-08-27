@@ -15,4 +15,6 @@ public interface Packages extends CrudRepository<Package, Integer> {
     // tag::query-by-method-step1
     List<Package> findByLengthGreaterThanWidthLessThan(float length, float width);
     // end::query-by-method-step1
+
+    List<Package> findByHeightBetween(float minHeight, float maxHeight);
 }

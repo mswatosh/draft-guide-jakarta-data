@@ -15,9 +15,10 @@ function addToQueries(item, index) {
     var parameters = document.createElement("div")
     parameters.className = "hFlexContainer"
 
-    item.parameters.forEach(param => {
+    item.parameters.forEach((param, index) => {
         input = document.createElement("input")
         input.placeholder = param
+        input.setAttribute("jtype", item.types[index])
         parameters.appendChild(input)
     })
 
@@ -36,8 +37,22 @@ function addToQueries(item, index) {
 
 async function callQuery(index) {
     var node = document.getElementById("query" + index)
+    
     var query = {}
     query.method = node.getElementsByTagName("button")[0].innerHTML
+    var inputs = node.getElementsByTagName("div")[0]
+
+    //Process Inputs
+    var params = []
+    var types = []
+    Array.from(inputs.getElementsByTagName("input")).forEach(input => {
+        params.push(input.value)
+        types.push(input.getAttribute("jtype"))
+    })
+    query.parameters = params
+    query.types = types
+
+    //Return json object
     const response = await fetch("shipping/packageQuery", {
 		method: "POST",
 		headers: {
@@ -46,6 +61,11 @@ async function callQuery(index) {
 		body: JSON.stringify(query),
 	})
 
+    processResponse(response)
+}
+
+
+async function processResponse(response) {
 	if (response.ok) {
 		const body = await response.text();
 		if (body.length > 0) {
