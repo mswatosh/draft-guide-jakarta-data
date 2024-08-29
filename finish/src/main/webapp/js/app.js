@@ -87,3 +87,10 @@ async function processResponse(response) {
 
     console.log(response);
 }
+
+function toast(message, index) {
+	var length = 3000;
+	var toast = document.getElementById("toast");
+	setTimeout(function(){ toast.innerText = message; toast.className = "show"; }, length*index);
+	setTimeout(function(){ toast.className = toast.className.replace("show",""); }, length + length*index);
+}

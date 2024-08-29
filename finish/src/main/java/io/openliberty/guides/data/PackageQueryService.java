@@ -4,10 +4,13 @@ import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import jakarta.inject.Inject;
@@ -50,14 +53,19 @@ public class PackageQueryService {
     @Produces(MediaType.APPLICATION_JSON)
     public String queries() {
         Method[] methods = Packages.class.getMethods();
-
         JsonArrayBuilder queryList = Json.createArrayBuilder();
 
         for (Method m : methods) {
+            System.out.println();
+            System.out.println("method:   " + m.getName() + "    --------");
+            
+            
             JsonObjectBuilder function = Json.createObjectBuilder();
             function.add("name", m.getName());
             JsonArrayBuilder params = Json.createArrayBuilder();
             JsonArrayBuilder types = Json.createArrayBuilder();
+            
+            System.out.println("params:   --------");
             for (Parameter p : m.getParameters()) {
                 params.add(p.getName());
                 types.add(p.getType().getName());
@@ -74,6 +82,7 @@ public class PackageQueryService {
 
     }
 
+    @SuppressWarnings("unchecked")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -102,6 +111,7 @@ public class PackageQueryService {
 
 
             Method method = Packages.class.getMethod(json.getString("method"), types.toArray(new Class<?>[0]));
+            checkForID(method, params);
             Object result = method.invoke(packages, params.toArray());
 
             JsonArrayBuilder returnList = Json.createArrayBuilder();
@@ -113,8 +123,10 @@ public class PackageQueryService {
                 ((List<?>)result).forEach(p -> {
                     returnList.add(((Package) p).toJson());
                 });
+            } else if (result instanceof Optional) {
+                returnList.add(((Optional<Package>) result).get().toJson());
             } else {
-                throw new UnsupportedOperationException("Return type not handled in PackageQueryService.java");
+                throw new UnsupportedOperationException("Return type " + result.getClass() + " not handled in PackageQueryService.java");
             }
             return returnList.build().toString();
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -126,11 +138,21 @@ public class PackageQueryService {
 
 
     Object getTypedValue(JsonArray array, int index, Class<?> type) {
-        System.out.println(type);
-        if (type.equals(Integer.class) || type.equals(Integer.TYPE)) return array.getInt(index);
+        System.out.println("type: " + type);
+        if (type.equals(Integer.class) || type.equals(Integer.TYPE)) return Integer.parseInt(array.getString(index));
         else if (type.equals(Long.class) || type.equals(Long.TYPE)) return Long.parseLong(array.getString(index));
         else if (type.equals(Float.class) || type.equals(Float.TYPE)) return Float.parseFloat(array.getString(index));
         else if (type.equals(Double.class) || type.equals(Double.TYPE)) return array.getJsonNumber(index).doubleValue();
         else return array.getString(index);
+    }
+
+    //Due to type erasure we need to handle id as a special case
+    void checkForID(Method method, List<Object> params) {
+        Parameter[] parameters = method.getParameters();
+        for (int i = 0; i < parameters.length; i++) {
+            if (parameters[i].getName().equals("id")) {
+                params.set(i, Integer.parseInt((String)params.get(i)));
+            }
+        }
     }
 }
