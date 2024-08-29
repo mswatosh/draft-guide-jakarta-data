@@ -4,8 +4,6 @@ import java.io.StringReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +17,6 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
-import jakarta.json.JsonString;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -32,6 +29,20 @@ public class PackageQueryService {
 
     @Inject
     Packages packages;
+
+    //TODO see if some of these could be included
+    static List<String> excludedMethods = new ArrayList<String>();
+    static {
+        excludedMethods.add("insert");
+        excludedMethods.add("insertAll");
+        excludedMethods.add("update");
+        excludedMethods.add("updateAll");
+        excludedMethods.add("save");
+        excludedMethods.add("saveAll");
+        excludedMethods.add("delete");
+        excludedMethods.add("deleteAll");
+        excludedMethods.add("deleteById");
+    }
 
     static Map<String,Class<?>> primitiveMap = new HashMap<String,Class<?>>();
     static {
@@ -56,6 +67,8 @@ public class PackageQueryService {
         JsonArrayBuilder queryList = Json.createArrayBuilder();
 
         for (Method m : methods) {
+            if (excludedMethods.contains(m.getName())) continue;
+            
             System.out.println();
             System.out.println("method:   " + m.getName() + "    --------");
             
@@ -154,5 +167,9 @@ public class PackageQueryService {
                 params.set(i, Integer.parseInt((String)params.get(i)));
             }
         }
+    }
+
+    boolean excludedMethods(Method m) {
+        return excludedMethods.contains(m.getName());
     }
 }

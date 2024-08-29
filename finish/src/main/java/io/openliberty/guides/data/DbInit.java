@@ -19,7 +19,11 @@ public class DbInit {
             packages.insert(new Package(1, 10f, 20f, 10f));
             packages.insert(new Package(2, 30f, 10f, 10f));
             packages.insert(new Package(3, 5f, 10f, 5f));
-            packages.insert(new Package(4, 5f, 15f, 15f));
+            packages.insert(new Package(4, 24f, 15f, 6f));
+            packages.insert(new Package(5, 15f, 7f, 2f));
+            packages.insert(new Package(6, 8f, 5f, 3f));
+            packages.insert(new Package(7, 16f, 3f, 15f));
+            packages.insert(new Package(8, 2f, 15f, 18f));
         }
     }
 }
