@@ -58,8 +58,6 @@ public class PackageQueryService {
     }
 
 
-    //TODO ignore queries that require an Object as a parameter e.g. delete requires an Entity
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String queries() {

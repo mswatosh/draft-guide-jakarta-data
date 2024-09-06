@@ -3,7 +3,7 @@ async function loadQueries() {
 
     if (response.ok) {
         const list = await response.json();
-        list.forEach(addToQueries) // TODO pass id to each query to set on div
+        list.forEach(addToQueries)
     }
 }
 
