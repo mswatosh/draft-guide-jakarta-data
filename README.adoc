@@ -127,6 +127,16 @@ spacing things out more
 
 == Using Annotations
 
+----
+#Create the `Packages.java` class.#
+`src/main/java/io/openliberty/guides/data/Packages.java`
+----
+Packages.java
+[source, Java, linenums, role='code_column hide_tags=query-by-method-step3,query-by-method-step2']
+----
+include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
+----
+
 With some text
 
 another paragraph

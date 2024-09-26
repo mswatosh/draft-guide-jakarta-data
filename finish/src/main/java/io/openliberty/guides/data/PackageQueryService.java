@@ -147,7 +147,6 @@ public class PackageQueryService {
         return "";
     }
 
-
     Object getTypedValue(JsonArray array, int index, Class<?> type) {
         System.out.println("type: " + type);
         if (type.equals(Integer.class) || type.equals(Integer.TYPE)) return Integer.parseInt(array.getString(index));
