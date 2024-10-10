@@ -12,8 +12,8 @@
 :page-releasedate: 2024-01-01
 :page-majorupdateddate: 2023-01-01
 :page-description: Description - TODO
-:page-tags: ['']
-:page-related-guides: ['', ']
+:page-tags: ['jakarta-ee']
+:page-related-guides: []
 :page-permalink: /guides/{projectid}
 :common-includes: https://raw.githubusercontent.com/OpenLiberty/guides-common/prod
 :source-highlighter: prettify
@@ -40,26 +40,35 @@ include::{common-includes}/gitclone.adoc[]
 
 In Jakarta Data an entity defines the structure for persisting a piece of data. This structure is represented by a Java object and it's associated fields. Start by creating a simple record class.
 
-[role="code_command hotspot", subs="quotes"]
+[role="code_command hotspot file=0", subs="quotes"]
 ----
 #Create the `Package` class.#
 `src/main/java/io/openliberty/guides/data/Package.java`
 ----
 
+Package.java
+[source, Java, linenums, role='code_column hide_tags=copyright']
+----
+include::src/main/java/io/openliberty/guides/data/Package.java[]
+----
+
 This is a very simple entity, with only a single field `id`.
 
-Repositories in Jakarta Data provide a simplified means for interacting with persistent data. Jakarta Data provides several built in Repositories with common methods which can be extended. The `CrudRepository` interface provides methods for Create, Read, Update, and Delete (CRUD) operations.
-
 //TODO Packages or PackageRepository?
+[role="code_command hotspot file=1", subs="quotes"]
 ----
 #Create the `Packages.java` class.#
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
+
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=query-by-method-step3,query-by-method-step2']
+[source, Java, linenums, role='code_column hide_tags=copyright,query-by-method-step2,query-by-method-step3']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
+
+Repositories in Jakarta Data provide a simplified means for interacting with persistent data. Jakarta Data provides several built in Repositories with common methods which can be extended. The [hotspot=CrudRepository file=1]`CrudRepository` interface provides methods for Create, Read, Update, and Delete (CRUD) operations.
+
 
 With some text
 
