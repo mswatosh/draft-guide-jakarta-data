@@ -49,7 +49,7 @@ In Jakarta Data an entity defines the structure for persisting a piece of data. 
 Package.java
 [source, Java, linenums, role='code_column hide_tags=copyright']
 ----
-include::src/main/java/io/openliberty/guides/data/Package.java[]
+include::finish/src/main/java/io/openliberty/guides/data/Package.java[]
 ----
 
 This is a very simple entity, with only a single field `id`.
@@ -62,7 +62,7 @@ This is a very simple entity, with only a single field `id`.
 ----
 
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=copyright,query-by-method-step2,query-by-method-step3']
+[source, Java, linenums, role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
@@ -93,7 +93,7 @@ really get this spaced out
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=query-by-method-step3,query-by-method-step1']
+[source, Java, linenums, role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
@@ -113,7 +113,7 @@ really get this spaced out
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=query-by-method-step1']
+[source, Java, linenums, role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
@@ -141,7 +141,7 @@ spacing things out more
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=query-by-method-step3,query-by-method-step2']
+[source, Java, linenums, role='code_column']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----

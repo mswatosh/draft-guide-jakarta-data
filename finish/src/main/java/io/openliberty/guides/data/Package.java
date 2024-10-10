@@ -14,7 +14,7 @@ package io.openliberty.guides.data;
 import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
 
-public record Package(int id, float length, float width, float height) {
+public record Package(int id, float length, float width, float height, String destination) {
     
     JsonObjectBuilder toJson() {
         JsonObjectBuilder json = Json.createObjectBuilder();
@@ -22,6 +22,7 @@ public record Package(int id, float length, float width, float height) {
         json.add("length", length);
         json.add("width", width);
         json.add("height", height);
+        json.add("destination", destination);
         return json;
     }
 }
