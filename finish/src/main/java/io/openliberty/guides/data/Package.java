@@ -15,6 +15,7 @@ import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
 
 public record Package(int id, float length, float width, float height, String destination) {
+    // tag::app-only[]
     
     JsonObjectBuilder toJson() {
         JsonObjectBuilder json = Json.createObjectBuilder();
@@ -25,4 +26,5 @@ public record Package(int id, float length, float width, float height, String de
         json.add("destination", destination);
         return json;
     }
+    // end::app-only[]
 }

@@ -47,7 +47,7 @@ In Jakarta Data an entity defines the structure for persisting a piece of data. 
 ----
 
 Package.java
-[source, Java, linenums, role='code_column hide_tags=copyright']
+[source, Java, linenums, role='code_column hide_tags=copyright,app-only']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Package.java[]
 ----
