@@ -103,6 +103,13 @@ Packages.java
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
 
+=== `@Find` and `@By`
+
+
+
+=== Renaming provided methods
+`@Insert`
+
 
 == Query by Method Name
 

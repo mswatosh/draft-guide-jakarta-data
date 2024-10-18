@@ -15,6 +15,7 @@ import java.util.List;
 
 import jakarta.data.repository.CrudRepository;
 import jakarta.data.repository.Find;
+import jakarta.data.repository.Insert;
 import jakarta.data.repository.By;
 import jakarta.data.repository.Repository;
 
@@ -38,5 +39,8 @@ public interface Packages extends CrudRepository<Package, Integer> {
     // tag::repository-annotations[]
     @Find
     List<Package> getPackagesArrivingIn(@By("destination") String destination);
+
+    @Insert
+    void add(Package p);
     // end::repository-annotations[]
 }
