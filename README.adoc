@@ -52,7 +52,7 @@ Package.java
 include::finish/src/main/java/io/openliberty/guides/data/Package.java[]
 ----
 
-This is a very simple entity, with only a single field `id`.
+This is a simple entity, with a few fields. 
 
 //TODO Packages or PackageRepository?
 [role="code_command hotspot file=1", subs="quotes"]
@@ -69,25 +69,6 @@ include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 
 Repositories in Jakarta Data provide a simplified means for interacting with persistent data. Jakarta Data provides several built in Repositories with common methods which can be extended. The [hotspot=CrudRepository file=1]`CrudRepository` interface provides methods for Create, Read, Update, and Delete (CRUD) operations.
 
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
-=== Maybe something else here
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
 ----
 #Create the `Packages.java` class.#
 `src/main/java/io/openliberty/guides/data/Packages.java`
@@ -98,14 +79,6 @@ Packages.java
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
 
-=== Another Section
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
 
 
 ----
@@ -117,22 +90,6 @@ Packages.java
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
-//To use this configuration property,
-//[role="code_command hotspot file=3", subs="quotes"]
-//----
-//#Create the `InventoryConfig.java` class.#
-//`src/main/java/io/openliberty/guides/inventory/InventoryConfig.java`
-//----
-//InventoryConfig.java
-//[source, Java, linenums, role='code_column hide_tags=copyright,inject-inMaintenance,custom-converter,isInMaintenance,getEmail']
-//----
-//include::finish/src/main/java/io/openliberty/guides/inventory/InventoryConfig.java[]
-//----
-
-=== One more section
-Use this to add some space?
-
-spacing things out more
 
 == Using Annotations
 
@@ -146,60 +103,13 @@ Packages.java
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
 
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
 
 == Query by Method Name
 
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
 
 
 
 == Sort, Limit, and Paging
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
-
-With some text
-
-another paragraph
-
-some additional writing here
-
-really get this spaced out
 
 
 
