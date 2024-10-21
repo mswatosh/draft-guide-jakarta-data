@@ -106,9 +106,14 @@ include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 === `@Find` and `@By`
 
 
-
+// TODO provided vs built-in?
 === Renaming provided methods
-`@Insert`
+If a method name provided by a built in Jakarta Data repository class doesn't align with your repository you can use annotations to provide your own method. For example, you can use `add` instead of the `insert` method inherited from `CrudRepository` like this.
+
+```
+@Insert
+void add(Package p);
+```
 
 
 == Query by Method Name
