@@ -11,12 +11,13 @@
 // end::copyright[]
 package io.openliberty.guides.data;
 
+// tag::app-only[]
 import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
-
+// end::app-only[]
 public record Package(int id, float length, float width, float height, String destination) {
     // tag::app-only[]
-    
+
     JsonObjectBuilder toJson() {
         JsonObjectBuilder json = Json.createObjectBuilder();
         json.add("id", id);

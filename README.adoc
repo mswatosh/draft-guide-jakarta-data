@@ -62,31 +62,21 @@ This is a simple entity, with a few fields.
 ----
 
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=copyright']
+[source, Java, linenums, role='code_column hide_tags=copyright,annotations']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
 
 Repositories in Jakarta Data provide a simplified means for interacting with persistent data. Jakarta Data provides several built in Repositories with common methods which can be extended. The [hotspot=CrudRepository file=1]`CrudRepository` interface provides methods for Create, Read, Update, and Delete (CRUD) operations.
 
+== Query by Method Name
+
 ----
-#Create the `Packages.java` class.#
+#Update the `Packages.java` class.#
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
 Packages.java
-[source, Java, linenums, role='code_column hide_tags=copyright']
-----
-include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
-----
-
-
-
-----
-#Create the `Packages.java` class.#
-`src/main/java/io/openliberty/guides/data/Packages.java`
-----
-Packages.java
-[source, Java, linenums, role='code_column hide_tags=copyright']
+[source, Java, linenums, role='code_column hide_tags=copyright,annotations']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
@@ -94,29 +84,30 @@ include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 == Using Annotations
 
 ----
-#Create the `Packages.java` class.#
+#Update the `Packages.java` class.#
 `src/main/java/io/openliberty/guides/data/Packages.java`
 ----
 Packages.java
-[source, Java, linenums, role='code_column']
+[source, Java, linenums, role='code_column hide_tags=copyright']
 ----
 include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 ----
 
-=== `@Find` and `@By`
+=== The `@Find` and `@By` Annotations
+
+
 
 
 // TODO provided vs built-in?
 === Renaming provided methods
-If a method name provided by a built in Jakarta Data repository class doesn't align with your repository you can use annotations to provide your own method. For example, you can use `add` instead of the `insert` method inherited from `CrudRepository` like this.
+If a method name provided by a built in Jakarta Data repository class doesn't align with your repository you can use annotations to provide your own method. For example, using the `@Insert` annotation you can use `add` instead of the `insert` method inherited from `CrudRepository` like this.
 
 ```
 @Insert
 void add(Package p);
 ```
 
-
-== Query by Method Name
+This method is functionally equivalent to the `insert` method provided by `CrudRepository`.
 
 
 

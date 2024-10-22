@@ -24,23 +24,19 @@ import jakarta.data.repository.Repository;
 public interface Packages extends CrudRepository<Package, Integer> {
 // end::CrudRepository[]
 
-    // tag::query-by-method-step1[]
+    // tag::query-by-method[]
     List<Package> findByLengthGreaterThan(float length);
-    // end::query-by-method-step1[]
-    
-    // tag::query-by-method-step2[]
+
     List<Package> findByLengthGreaterThanWidthLessThan(float length, float width);
-    // end::query-by-method-step2[]
 
-    // tag::query-by-method-step3[]
     List<Package> findByHeightBetween(float minHeight, float maxHeight);
-    // end::query-by-method-step3[]
+    // end::query-by-method[]
 
-    // tag::repository-annotations[]
+    // tag::annotations[]
     @Find
     List<Package> getPackagesArrivingIn(@By("destination") String destination);
 
     @Insert
     void add(Package p);
-    // end::repository-annotations[]
+    // end::annotations[]
 }
