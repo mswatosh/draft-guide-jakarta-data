@@ -97,7 +97,6 @@ include::finish/src/main/java/io/openliberty/guides/data/Packages.java[]
 
 
 
-
 // TODO provided vs built-in?
 === Renaming provided methods
 If a method name provided by a built in Jakarta Data repository class doesn't align with your repository you can use annotations to provide your own method. For example, using the `@Insert` annotation you can use `add` instead of the `insert` method inherited from `CrudRepository` like this.
@@ -109,6 +108,9 @@ void add(Package p);
 
 This method is functionally equivalent to the `insert` method provided by `CrudRepository`.
 
+
+=== The `@OrderBy` Annotation
+To provide ordering annotatively, you can use the `@OrderBy` annotation. The default ordering direction is ascending.
 
 
 
